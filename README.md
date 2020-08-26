@@ -127,7 +127,7 @@ A collection of coins to be initialized into the vending machine.  The key will 
 ]
 ```
 
-## Assumptions/Limitation
+## Assumptions/Limitations
 1. The machine can initialize, deposit & withdraw using multiple coins per transaction.
 2. The initial 'float' is set by the number of coins deposited at initialization - this is not set using a float data type.
 3. For simplicity this machine stores each coin type as an Enumeration.  This approach has allowed me to easily control & validate coin types initialized & submitted (on this small scale) - if you were to introduce notes/other currencies - this may not be an appropriate data type.
