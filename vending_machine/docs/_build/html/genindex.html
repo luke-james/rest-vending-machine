@@ -44,6 +44,7 @@
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
@@ -56,23 +57,21 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="exceptions.html#exceptions.ChangeError">ChangeError</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.views.ChangeView">ChangeView (class in vending_machine_api.views)</a>
-</li>
       <li><a href="vending_machine_api.html#vending_machine_api.utils.CoinEnum.choices">choices() (vending_machine_api.utils.CoinEnum class method)</a>
 </li>
       <li><a href="vending_machine_api.html#vending_machine_api.utils.CoinEnum">CoinEnum (class in vending_machine_api.utils)</a>
 </li>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister">CoinRegister (class in vending_machine_api.models)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet">CoinWallet (class in vending_machine_api.models)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.DoesNotExist">CoinRegister.DoesNotExist</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.DoesNotExist">CoinWallet.DoesNotExist</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.MultipleObjectsReturned">CoinRegister.MultipleObjectsReturned</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.MultipleObjectsReturned">CoinWallet.MultipleObjectsReturned</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.tests.CoinRegisterTestCase">CoinRegisterTestCase (class in vending_machine_api.tests)</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.tests.CoinWalletTestCase">CoinWalletTestCase (class in vending_machine_api.tests)</a>
-</li>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.count">count (vending_machine_api.models.CoinWallet attribute)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.count">count (vending_machine_api.models.CoinRegister attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -104,10 +103,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="vending_machine_api.html#vending_machine_api.tests.DepositChangeViewTestCase">DepositChangeViewTestCase (class in vending_machine_api.tests)</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.views.ChangeView.dispatch">dispatch() (vending_machine_api.views.ChangeView method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.views.RegisterStatusView.dispatch">dispatch() (vending_machine_api.views.RegisterStatusView method)</a>
 
       <ul>
-        <li><a href="vending_machine_api.html#vending_machine_api.views.MachineView.dispatch">(vending_machine_api.views.MachineView method)</a>
+        <li><a href="vending_machine_api.html#vending_machine_api.views.TransactionView.dispatch">(vending_machine_api.views.TransactionView method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -129,13 +128,13 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.views.ChangeView.get">get() (vending_machine_api.views.ChangeView method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.views.TransactionView.get">get() (vending_machine_api.views.TransactionView method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.get_unit_display">get_unit_display() (vending_machine_api.models.CoinWallet method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.get_unit_display">get_unit_display() (vending_machine_api.models.CoinRegister method)</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.get_value">get_value() (vending_machine_api.models.CoinWallet method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.get_value">get_value() (vending_machine_api.models.CoinRegister method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -143,13 +142,15 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.id">id (vending_machine_api.models.CoinWallet attribute)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.id">id (vending_machine_api.models.CoinRegister attribute)</a>
+</li>
+      <li><a href="vending_machine_api.html#vending_machine_api.views.index">index() (in module vending_machine_api.views)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.views.index">index() (in module vending_machine_api.views)</a>
-</li>
       <li><a href="vending_machine_api.migrations.html#vending_machine_api.migrations.0001_initial.Migration.initial">initial (vending_machine_api.migrations.0001_initial.Migration attribute)</a>
+</li>
+      <li><a href="vending_machine_api.html#vending_machine_api.utils.UniqueDecoder.is_collection_unique">is_collection_unique() (vending_machine_api.utils.UniqueDecoder method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -157,8 +158,6 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.views.MachineView">MachineView (class in vending_machine_api.views)</a>
-</li>
       <li><a href="vending_machine_api.html#vending_machine_api.tests.MachineViewTestCase">MachineViewTestCase (class in vending_machine_api.tests)</a>
 </li>
       <li><a href="manage.html#manage.main">main() (in module manage)</a>
@@ -263,7 +262,7 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.objects">objects (vending_machine_api.models.CoinWallet attribute)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.objects">objects (vending_machine_api.models.CoinRegister attribute)</a>
 </li>
       <li><a href="vending_machine_api.migrations.html#vending_machine_api.migrations.0001_initial.Migration.operations">operations (vending_machine_api.migrations.0001_initial.Migration attribute)</a>
 
@@ -309,19 +308,27 @@
 </li>
       <li><a href="vending_machine_api.html#vending_machine_api.utils.CoinEnum.PENCE_50">PENCE_50 (vending_machine_api.utils.CoinEnum attribute)</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.views.ChangeView.post">post() (vending_machine_api.views.ChangeView method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.views.RegisterStatusView.post">post() (vending_machine_api.views.RegisterStatusView method)</a>
 
       <ul>
-        <li><a href="vending_machine_api.html#vending_machine_api.views.MachineView.post">(vending_machine_api.views.MachineView method)</a>
+        <li><a href="vending_machine_api.html#vending_machine_api.views.TransactionView.post">(vending_machine_api.views.TransactionView method)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="vending_machine_api.html#vending_machine_api.views.RegisterStatusView">RegisterStatusView (class in vending_machine_api.views)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.tests.CoinWalletTestCase.setUp">setUp() (vending_machine_api.tests.CoinWalletTestCase method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.tests.CoinRegisterTestCase.setUp">setUp() (vending_machine_api.tests.CoinRegisterTestCase method)</a>
 
       <ul>
         <li><a href="vending_machine_api.html#vending_machine_api.tests.DepositChangeViewTestCase.setUp">(vending_machine_api.tests.DepositChangeViewTestCase method)</a>
@@ -349,7 +356,7 @@
 </li>
       <li><a href="vending_machine_api.html#vending_machine_api.tests.WithdrawChangeViewTestCase.test_bad_query_get_change">test_bad_query_get_change() (vending_machine_api.tests.WithdrawChangeViewTestCase method)</a>
 </li>
-      <li><a href="vending_machine_api.html#vending_machine_api.tests.CoinWalletTestCase.test_CoinTypeCount">test_CoinTypeCount() (vending_machine_api.tests.CoinWalletTestCase method)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.tests.CoinRegisterTestCase.test_CoinTypeCount">test_CoinTypeCount() (vending_machine_api.tests.CoinRegisterTestCase method)</a>
 </li>
       <li><a href="vending_machine_api.html#vending_machine_api.tests.WithdrawChangeViewTestCase.test_empty_get_change">test_empty_get_change() (vending_machine_api.tests.WithdrawChangeViewTestCase method)</a>
 </li>
@@ -385,13 +392,19 @@
 </li>
       <li><a href="vending_machine_api.html#vending_machine_api.tests.DepositChangeViewTestCase.test_string_value_post_change">test_string_value_post_change() (vending_machine_api.tests.DepositChangeViewTestCase method)</a>
 </li>
+      <li><a href="vending_machine_api.html#vending_machine_api.views.TransactionView">TransactionView (class in vending_machine_api.views)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinWallet.unit">unit (vending_machine_api.models.CoinWallet attribute)</a>
+      <li><a href="vending_machine_api.html#vending_machine_api.utils.UniqueDecoder">UniqueDecoder (class in vending_machine_api.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="vending_machine_api.html#vending_machine_api.models.CoinRegister.unit">unit (vending_machine_api.models.CoinRegister attribute)</a>
 </li>
   </ul></td>
 </tr></table>

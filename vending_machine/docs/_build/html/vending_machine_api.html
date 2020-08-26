@@ -77,53 +77,53 @@
 <div class="section" id="module-vending_machine_api.models">
 <span id="vending-machine-api-models-module"></span><h2>vending_machine_api.models module<a class="headerlink" href="#module-vending_machine_api.models" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="vending_machine_api.models.CoinWallet">
-<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.models.</code><code class="sig-name descname">CoinWallet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">unit</span></em>, <em class="sig-param"><span class="n">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.models.CoinWallet" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister">
+<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.models.</code><code class="sig-name descname">CoinRegister</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">unit</span></em>, <em class="sig-param"><span class="n">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.models.CoinRegister" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <dl class="py exception">
-<dt id="vending_machine_api.models.CoinWallet.DoesNotExist">
-<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#vending_machine_api.models.CoinWallet.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#vending_machine_api.models.CoinRegister.DoesNotExist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="vending_machine_api.models.CoinWallet.MultipleObjectsReturned">
-<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#vending_machine_api.models.CoinWallet.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#vending_machine_api.models.CoinRegister.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="vending_machine_api.models.CoinWallet.count">
-<code class="sig-name descname">count</code><a class="headerlink" href="#vending_machine_api.models.CoinWallet.count" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.count">
+<code class="sig-name descname">count</code><a class="headerlink" href="#vending_machine_api.models.CoinRegister.count" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vending_machine_api.models.CoinWallet.get_unit_display">
-<code class="sig-name descname">get_unit_display</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.PositiveIntegerField: unit&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.models.CoinWallet.get_unit_display" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.get_unit_display">
+<code class="sig-name descname">get_unit_display</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.PositiveIntegerField: unit&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.models.CoinRegister.get_unit_display" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="vending_machine_api.models.CoinWallet.get_value">
-<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.models.CoinWallet.get_value" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.get_value">
+<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.models.CoinRegister.get_value" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="vending_machine_api.models.CoinWallet.id">
-<code class="sig-name descname">id</code><a class="headerlink" href="#vending_machine_api.models.CoinWallet.id" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#vending_machine_api.models.CoinRegister.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="vending_machine_api.models.CoinWallet.objects">
-<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#vending_machine_api.models.CoinWallet.objects" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#vending_machine_api.models.CoinRegister.objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="vending_machine_api.models.CoinWallet.unit">
-<code class="sig-name descname">unit</code><a class="headerlink" href="#vending_machine_api.models.CoinWallet.unit" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.models.CoinRegister.unit">
+<code class="sig-name descname">unit</code><a class="headerlink" href="#vending_machine_api.models.CoinRegister.unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -134,18 +134,18 @@ object the first time, the query is executed.</p>
 <div class="section" id="module-vending_machine_api.tests">
 <span id="vending-machine-api-tests-module"></span><h2>vending_machine_api.tests module<a class="headerlink" href="#module-vending_machine_api.tests" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="vending_machine_api.tests.CoinWalletTestCase">
-<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.tests.</code><code class="sig-name descname">CoinWalletTestCase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">methodName</span><span class="o">=</span><span class="default_value">'runTest'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.tests.CoinWalletTestCase" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.tests.CoinRegisterTestCase">
+<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.tests.</code><code class="sig-name descname">CoinRegisterTestCase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">methodName</span><span class="o">=</span><span class="default_value">'runTest'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.tests.CoinRegisterTestCase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.test.testcases.TestCase</span></code></p>
 <dl class="py method">
-<dt id="vending_machine_api.tests.CoinWalletTestCase.setUp">
-<code class="sig-name descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.tests.CoinWalletTestCase.setUp" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.tests.CoinRegisterTestCase.setUp">
+<code class="sig-name descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.tests.CoinRegisterTestCase.setUp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hook method for setting up the test fixture before exercising it.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vending_machine_api.tests.CoinWalletTestCase.test_CoinTypeCount">
-<code class="sig-name descname">test_CoinTypeCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.tests.CoinWalletTestCase.test_CoinTypeCount" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.tests.CoinRegisterTestCase.test_CoinTypeCount">
+<code class="sig-name descname">test_CoinTypeCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.tests.CoinRegisterTestCase.test_CoinTypeCount" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -368,23 +368,59 @@ This enumeration defines GB/UK coins ONLY.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="vending_machine_api.utils.UniqueDecoder">
+<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.utils.</code><code class="sig-name descname">UniqueDecoder</code><a class="headerlink" href="#vending_machine_api.utils.UniqueDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="vending_machine_api.utils.UniqueDecoder.is_collection_unique">
+<code class="sig-name descname">is_collection_unique</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">deposit_pairs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.utils.UniqueDecoder.is_collection_unique" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-vending_machine_api.views">
 <span id="vending-machine-api-views-module"></span><h2>vending_machine_api.views module<a class="headerlink" href="#module-vending_machine_api.views" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="vending_machine_api.views.ChangeView">
-<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.views.</code><code class="sig-name descname">ChangeView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.ChangeView" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.views.RegisterStatusView">
+<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.views.</code><code class="sig-name descname">RegisterStatusView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.RegisterStatusView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.View</span></code></p>
+<p>This class will handle the initialization of the vending machine’s cash register.</p>
+<dl class="py method">
+<dt id="vending_machine_api.views.RegisterStatusView.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.RegisterStatusView.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vending_machine_api.views.RegisterStatusView.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.RegisterStatusView.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the vending machine.</p>
+<p>A POST request should contain a collection of coin types &amp; counts to be initialized.  Every coin 
+in the collection MUST correspond to a member of CoinEnum.  If a coin type is not provided as 
+part of the request, its count will be initialized to 0.</p>
+<p>This function will return:
+- HTTP 200: OK (if all coin types are valid and have successfully been initialized).
+- HTTP 400: BAD REQUEST (if any of the coin types are invalid - no changes to the vending machine will be made).
+- HTTP 500: INTERNAL SERVER ERROR (general error to catch any unexpectected exceptions)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vending_machine_api.views.TransactionView">
+<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.views.</code><code class="sig-name descname">TransactionView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.TransactionView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.View</span></code></p>
 <p>This class will handle the exchange of funds between the user and the vending machine.
 Currently the only interactions are: 1. Deposit 2. Withdraw</p>
 <dl class="py method">
-<dt id="vending_machine_api.views.ChangeView.dispatch">
-<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.ChangeView.dispatch" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.views.TransactionView.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.TransactionView.dispatch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="vending_machine_api.views.ChangeView.get">
-<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.ChangeView.get" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.views.TransactionView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.TransactionView.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function will handle the withdrawl of funds (amount of change given in pence as a parameter).</p>
 <p>This function will return:
 - HTTP 200: OK (if full amount of change can be given).
@@ -395,38 +431,13 @@ Currently the only interactions are: 1. Deposit 2. Withdraw</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vending_machine_api.views.ChangeView.post">
-<code class="sig-name descname">post</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.ChangeView.post" title="Permalink to this definition">¶</a></dt>
+<dt id="vending_machine_api.views.TransactionView.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.TransactionView.post" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function handles the deposit of funds from a user into the vending machine.
 The format of coins sent should be defined as a json structure (guidance provided in the README).</p>
 <p>This function will return:
 - HTTP 200: OK (if all coins have been deposited).
 - HTTP 400: BAD REQUEST (if any of the coins are of an invalid type OR if 0 coins have been requested for deposit)
-- HTTP 500: INTERNAL SERVER ERROR (general error to catch any unexpectected exceptions)</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="vending_machine_api.views.MachineView">
-<em class="property">class </em><code class="sig-prename descclassname">vending_machine_api.views.</code><code class="sig-name descname">MachineView</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.MachineView" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.View</span></code></p>
-<p>This class will handle the initialization of the vending machine.</p>
-<dl class="py method">
-<dt id="vending_machine_api.views.MachineView.dispatch">
-<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.MachineView.dispatch" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="vending_machine_api.views.MachineView.post">
-<code class="sig-name descname">post</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#vending_machine_api.views.MachineView.post" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize the vending machine.</p>
-<p>A POST request should contain a collection of coin types &amp; counts to be initialized.  Every coin 
-in the collection MUST correspond to a member of CoinEnum.  If a coin type is not provided as 
-part of the request, its count will be initialized to 0.</p>
-<p>This function will return:
-- HTTP 200: OK (if all coin types are valid and have successfully been initialized).
-- HTTP 400: BAD REQUEST (if any of the coin types are invalid - no changes to the vending machine will be made).
 - HTTP 500: INTERNAL SERVER ERROR (general error to catch any unexpectected exceptions)</p>
 </dd></dl>
 
