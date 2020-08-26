@@ -7,7 +7,7 @@ DOCS : PORT 1000 (Docker-ONLY)<br>
 
 Note: Documentation is generated using Sphinx default settings - no custom modules used due to time constraints.<br>
 
-**Valid Currency**<br>
+**Valid Currency (CoinEnum)**<br>
 <ul>
 <li>1p      = "PENCE_1"</li>
 <li>2p      = "PENCE_2"</li>
@@ -33,10 +33,10 @@ Note: Documentation is generated using Sphinx default settings - no custom modul
 `cd [git_repository_path]/vending_machine/docs && sphinx-apidoc -o . .. && make html`
 
 **To run the API (locally):**<br>
-`python vending_machine/manage.py runserver`
+`python [git_repository_path]/vending_machine/manage.py runserver`
 
 **To run the tests (locally):**<br>
-`python vending_machine_manage.py test`
+`python [git_repository_path]/vending_machine_manage.py test`
 
 ## Deployment with Docker (CE/Compose - all services)
 **Requires DockerCE & Compose**<br>
@@ -62,7 +62,7 @@ Subsequent response definitions will only detail the expected value of the 'data
 `POST /init/<coins>`
 
 **Arguments**<br>
-- ` { "coin_type": { "count": integer }} ` <br>
+- ` [ { "id": "string", "count": integer } ] ` - collection of coins being initialized ('id' string should correspond to a valid CoinEnum member above) <br>
 
 A collection of coins to be initialized into the vending machine.  The key will correspond to the valid list of coin types available in the machine, and the value will correspond to the number of coins being initialized for this type.  The vending machine will override all change available in the machine with the payload of this request, when this request has been made.
 
@@ -90,7 +90,7 @@ A collection of coins to be initialized into the vending machine.  The key will 
 `GET /change/<amount>`
 
 **Arguments**<br>
-- `"amount": integer` the amount of change (in pence) that has been requested - this must be a positive integer value.
+- `{ "amount": integer }` the amount of change (in pence) that has been requested - this must be a positive integer value.
 
 **Response**<br>
 - `200 OK` on success <br>
@@ -111,7 +111,7 @@ A collection of coins to be initialized into the vending machine.  The key will 
 `POST /change/<coins>` 
 
 **Arguments**<br>
-- `{ "coin_type": { "count": integer }}` collection of coins being deposited.
+- `[ { "id": "string", "count": integer } ]` - collection of coins being deposited ('id' string should correspond to a valid CoinEnum member above).
 
 **Response**<br>
 - `200 OK` on success
@@ -152,7 +152,7 @@ A collection of coins to be initialized into the vending machine.  The key will 
 5. Dev/Staging/Prod configuration (settings, logging, secrets/keys etc.) has not been implemented for the Django project/app due to time limitations.
 
 ## Other Notes
-I have provided a suite of test cases that can be run with the instructions above.  If you wish to have more flexibility with interacting with the API, any freely available API client will work nicely.  
+I have provided a suite of test cases that can be run with the instructions above.  If you wish to have more flexibility with interacting with the API, any freely available API client will work nicely.  <br>
 
-e.g. 
-https://insomnia.rest/
+e.g. <br>
+https://insomnia.rest/ <br>
