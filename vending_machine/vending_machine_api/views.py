@@ -87,19 +87,18 @@ class RegisterStatusView(View):
             # All count values must be > 0!!
             for coin_value, coin_id in CoinEnum.choices():
                 coin_in_register, created = CoinRegister.objects.get_or_create(unit=CoinEnum[coin_id])
+                coin_in_register.count = 0
                 for initialized_coin in data:
                     if coin_id == initialized_coin['id']:
                         logger.debug(f'Attempting initialization for coin type { initialized_coin["id"] } with a count of { initialized_coin["count"] }')
                         if initialized_coin['count'] > 0:
                             logger.debug(f'Initializing coin type: { initialized_coin["id"] } with a count of: { initialized_coin["count"] }...')
-                            coin_in_register.count = initialized_coin['count']
-                            break
+                            coin_in_register.count += initialized_coin['count']
                         else:
                             logger.debug(f'Not enough coins deposited for type: { initialized_coin["id"] }! Aborting initialization...')
                             raise (ValueError)
                     else:
                         logger.debug(f'Coin type { initialized_coin["id"] } not part of the request!  Initializing with a count of 0...')
-                        coin_in_register.count = 0
 
                 coin_in_register.save()
                 coins_initialized.append({ "id": coin_in_register.unit, "count": coin_in_register.count})
@@ -265,8 +264,6 @@ class TransactionView(View):
                                 if not created:
                                     coin_in_register.count += deposited_coin["count"]
                                     coin_in_register.save()
-                                    deposited_coins_dict.append({ "id": deposited_coin["id"], "count": deposited_coin["count"] })
-                                    break
                                 else:
                                     coin_in_register = deposited_coin["count"]
                                     coin_in_register.save()
