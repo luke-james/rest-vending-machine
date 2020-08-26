@@ -19,12 +19,13 @@ Note: Documentation is generated using Sphinx default settings - no custom modul
 <li>£2      = "PENCE_200"</li>
 </ul>
 
-## Deployment Option 1: Local (no html-based REAME.md or Sphinx docs)
+## Local Setup
 **Requires Python >= 3.4x & Virtual Environments**<br>
 `git clone https://github.com/luke-james/rest-vending-machine.git`<br>
 `python3 -m venv [git repository path]/env` <br>
 `source /path/to/env/bin/activate` <br>
 `pip install -r requirements.txt` <br>
+`cd vending_machine/ && python manage.py migrate --run-syncdb`
 
 **To run the API:**<br>
 `python vending_machine/manage.py runserver`
