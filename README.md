@@ -2,8 +2,8 @@
 A REST API for a vending machine written in Python, deployed using Docker.
 
 **Services:**<br>
-REST API : PORT 8000<br>
-DOCS : PORT 1000 (Docker-ONLY)<br>
+REST API : localhost:8000/<br>
+DOCS : localhost:1000/ (Docker-ONLY)<br>
 
 Note: Documentation is generated using Sphinx default settings - no custom modules used due to time constraints.<br>
 
@@ -39,11 +39,8 @@ Note: Documentation is generated using Sphinx default settings - no custom modul
 `python [git_repository_path]/vending_machine_manage.py test`
 
 ## Deployment with Docker (CE/Compose - all services)
-**Requires DockerCE & Compose**<br>
-`docker-compose build`<br>
-
-**To run the API (docker):**<br>
-`docker-compose up`<br>
+**Requires DockerCE & Compose to run the API...**<br>
+`docker-compose build && docker-compose up`<br>
 
 # Usage
 

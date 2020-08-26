@@ -130,7 +130,7 @@ class TransactionView(View):
 
     """
 
-        This class will handle the exchange of funds between the user and the vending machine.
+        This class will handle the exchange of funds (a.k.a a transaction) between the user and the vending machine.
         Currently the only interactions are: 1. Deposit 2. Withdraw   
     
     """
@@ -160,28 +160,28 @@ class TransactionView(View):
             change_given = dict()
 
             # Get coins in wallet in reverse order so we can minimise the number of coins returned...
-            coins_in_wallet = CoinRegister.objects.order_by("-unit")
+            coins_in_register = CoinRegister.objects.order_by("-unit")
 
             # For the coins available in the wallet/register, we must check to see if we have a valid number available to give back to the user.
             # This loop will check each coin type (from largest to smallest) - if the coin is small enough to be used as change, the vending machine will give 
             logger.debug('Collecting coins for withraw...')
-            for coin_type in coins_in_wallet:
-                if (coin_type.unit <= requested_change):
-                    logger.debug(f'Coin type { coin_type.unit } can be used for withdraw.  Calculating withdraw count...')
-                    coin_given = requested_change // coin_type.unit
-                    logger.debug(f'{coin_given}x of coin type { coin_type.unit } can be used for withdraw!')
-                    if coin_type.count > 0:
-                        if coin_type.count >= coin_given:
-                            coin_type.count -= coin_given
-                            logger.debug(f'{coin_given} used of coin type: { coin_type.unit }')
+            for coin in coins_in_register:
+                if (coin.unit <= requested_change):
+                    logger.debug(f'Coin type { coin.unit } can be used for withdraw.  Calculating withdraw count...')
+                    coins_given = requested_change // coin.unit
+                    logger.debug(f'{coins_given}x of coin type { coin.unit } can be used for withdraw!')
+                    if coin.count > 0:
+                        if coin.count >= coins_given:
+                            coin.count -= coins_given
+                            logger.debug(f'{coins_given} used of coin type: { coin.unit }')
                         else:
-                            logger.warning(f'Coin type: { coin_type.unit } not enough coins to be used to minimise change given!  Using all coins available...')
-                            coin_given = coin_type.count
-                            coin_type.count = 0
+                            logger.warning(f'Coin type: { coin.unit } not enough coins to be used to minimise change given!  Using all coins available...')
+                            coins_given = coin.count
+                            coin.count = 0
                         
-                        coin_type.save()   
-                        change_given[CoinEnum(coin_type.unit).name] = coin_given
-                        requested_change -= coin_type.unit * coin_given
+                        coin.save()   
+                        change_given[CoinEnum(coin.unit).name] = coins_given
+                        requested_change -= coin.unit * coins_given
                         logger.debug(f'{ requested_change } pence still owed for withdraw...')
                     
 
