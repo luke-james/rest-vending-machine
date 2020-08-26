@@ -8,6 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Creates tables for app without migrations..
-CMD python ./vending_machine/manage.py migrate --run-syncdb
 

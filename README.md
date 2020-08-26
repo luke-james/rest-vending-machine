@@ -19,32 +19,31 @@ Note: Documentation is generated using Sphinx default settings - no custom modul
 <li>£2      = "PENCE_200"</li>
 </ul>
 
-## Local Setup
+## Local Setup - PRE-REQUISITE TO DEPLOYING LOCALLY/WITH DOCKER
 **Requires Python >= 3.4x & Virtual Environments**<br>
 `git clone https://github.com/luke-james/rest-vending-machine.git`<br>
 `python3 -m venv [git repository path]/env` <br>
 `source /path/to/env/bin/activate` <br>
 `pip install -r requirements.txt` <br>
-`cd vending_machine/ && python manage.py migrate --run-syncdb`
 
-**To run the API:**<br>
+**Create tables for app without migrations...** <br>
+`cd [git_repository_path]/vending_machine/ && python manage.py migrate --run-syncdb` <br>
+
+**Compile Sphinx Documentation...** <br>
+`cd [git_repository_path]/vending_machine/docs && sphinx-apidoc -o . .. && make html`
+
+**To run the API (locally):**<br>
 `python vending_machine/manage.py runserver`
 
-**To run the tests:**<br>
+**To run the tests (locally):**<br>
 `python vending_machine_manage.py test`
 
-## Deployment Option 2: Docker (CE/Compose - all services)
+## Deployment with Docker (CE/Compose - all services)
 **Requires DockerCE & Compose**<br>
-`git clone https://github.com/luke-james/rest-vending-machine.git`<br>
 `docker-compose build`<br>
 
-**To run the API:**<br>
+**To run the API (docker):**<br>
 `docker-compose up`<br>
-
-**To run the tests:**<br>
-`docker-compose up` <br>
-`docker exec -it <container name> bash` <br>
-`python /code/vending_machine/manage.py test` <br>
 
 # Usage
 
@@ -131,6 +130,29 @@ A collection of coins to be initialized into the vending machine.  The key will 
 ]
 ```
 
-## Assumptions<br>
-1. The machine can initialize using multiple coins at once (as if the engineer as opened the side and 'popped a few coins in for change').
-2. The 'float' has been treated as the machine balance as opposed to a data type.  For simplicity this machine has been designed to work in units of 'pence' using UK currency.
+## Assumptions/Limitation
+1. The machine can initialize, deposit & withdraw using multiple coins per transaction.
+2. The initial 'float' is set by the number of coins deposited at initialization - this is not set using a float data type.
+3. For simplicity this machine stores each coin type as an Enumeration.  This approach has allowed me to easily control & validate coin types initialized & submitted (on this small scale) - if you were to introduce notes/other currencies - this may not be an appropriate data type.
+3. The vending machine does not check for duplicate entries.  The following is acceptable to initialize/deposit (this will give you a total of 12x 1p coins):
+
+```json
+[
+    {
+        "id": "PENCE_1",
+        "count": 2
+    },
+    {
+        "id": "PENCE_1",
+        "count": 10
+    }
+]
+```
+4. Sphinx documentation does not use any custom modules due to time constraints.
+5. Dev/Staging/Prod configuration (settings, logging, secrets/keys etc.) has not been implemented for the Django project/app due to time limitations.
+
+## Other Notes
+I have provided a suite of test cases that can be run with the instructions above.  If you wish to have more flexibility with interacting with the API, any freely available API client will work nicely.  
+
+e.g. 
+https://insomnia.rest/
