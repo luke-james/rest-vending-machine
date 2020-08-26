@@ -50,11 +50,13 @@ class MachineViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_1": -1
+            "PENCE_1": {
+                "count": -1
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
-        self.assertEqual(response.status_code, 406)
+        self.assertEqual(response.status_code, 400)
 
     def test_bad_coin_type_init(self):
 
@@ -63,11 +65,13 @@ class MachineViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_INVALID": 1
+            "PENCE_INVALID": {
+                "count": 1
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
-        self.assertEqual(response.status_code, 406)
+        self.assertEqual(response.status_code, 400)
 
     def test_good_coin_type_init(self):
 
@@ -76,7 +80,9 @@ class MachineViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_1": 10
+            "PENCE_1": {
+                "count": 10
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
@@ -196,7 +202,9 @@ class DepositChangeViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_1": 1
+            "PENCE_1": {
+                "count": 1
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
@@ -213,7 +221,7 @@ class DepositChangeViewTestCase(TestCase):
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
-        self.assertEqual(response.status_code, 304)
+        self.assertEqual(response.status_code, 400)
 
     def test_negative_post_change(self):
         
@@ -222,7 +230,9 @@ class DepositChangeViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_1": -1
+            "PENCE_1": {
+                "count": -1
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
@@ -235,7 +245,9 @@ class DepositChangeViewTestCase(TestCase):
         """
 
         data = {
-            "INVALID_COIN_TYPE": 1
+            "INVALID_COIN_TYPE": {
+                "count":1
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
@@ -248,7 +260,9 @@ class DepositChangeViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_1": "1"
+            "PENCE_1": {
+                "count": "1"
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
@@ -261,7 +275,9 @@ class DepositChangeViewTestCase(TestCase):
         """
 
         data = {
-            "INVALID_COIN_TYPE": 1.0
+            "INVALID_COIN_TYPE": {
+                "count": 1.0
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
@@ -274,7 +290,9 @@ class DepositChangeViewTestCase(TestCase):
         """
 
         data = {
-            "PENCE_1": 1.5
+            "PENCE_1": {
+                "count": 1.5
+            }
         }
 
         response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
