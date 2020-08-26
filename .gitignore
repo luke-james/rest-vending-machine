@@ -132,4 +132,4 @@ dmypy.json
 .vscode/
 
 # Sphinx Documentation
-#./vending_machine/docs/_build/
+./vending_machine/docs/_build/
