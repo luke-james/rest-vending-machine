@@ -19,7 +19,7 @@ Note: Documentation is generated using Sphinx default settings - no custom modul
 <li>£2      = "PENCE_200"</li>
 </ul>
 
-## Local Setup - PRE-REQUISITE TO DEPLOYING LOCALLY/WITH DOCKER
+## Local Setup - PREREQUISITE TO DEPLOYING LOCALLY/WITH DOCKER
 **Requires Python >= 3.4x & Virtual Environments**<br>
 `git clone https://github.com/luke-james/rest-vending-machine.git`<br>
 `python3 -m venv [git repository path]/env` <br>
