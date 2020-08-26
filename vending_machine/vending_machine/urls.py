@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from vending_machine_api.views import index
-from vending_machine_api.views import MachineView
-from vending_machine_api.views import ChangeView
+from vending_machine_api.views import RegisterStatusView
+from vending_machine_api.views import TransactionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('init/', MachineView.as_view(), name='init machine'),
-    path('change/', ChangeView.as_view(), name='get/deposit change'),
+    path('init/', RegisterStatusView.as_view(), name='init machine'),
+    path('change/', TransactionView.as_view(), name='get/deposit change'),
 ]

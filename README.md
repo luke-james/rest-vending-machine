@@ -75,8 +75,8 @@ A collection of coins to be initialized into the vending machine.  The key will 
 {
     "PENCE_1": {
         "count": 2
-    },
-        
+    },      
+     
     "PENCE_2": {
         "count": 10
     }
@@ -119,19 +119,19 @@ A collection of coins to be initialized into the vending machine.  The key will 
 - `{ "coin_type": { "count": integer }}` collection of coin being deposited.
 
 **Response**<br>
-- `400 BAD REQUEST` invalid coin deposited/0 coins have been deposited
 - `200 OK` on success
+- `400 BAD REQUEST` invalid coin deposited/0 coins have been deposited
 
 ```json
-    {
-        "PENCE_1": {
-            "count": 5
-        },
-
-        "PENCE_2": {
-            "count": 10
-        }
+{
+    "PENCE_1": {
+        "count": 5
     },
+
+    "PENCE_2": {
+        "count": 10
+        
+}
 ```
 
 

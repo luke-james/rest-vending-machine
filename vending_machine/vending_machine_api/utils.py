@@ -1,4 +1,20 @@
 from enum import IntEnum
+from collections import OrderedDict
+from json import JSONDecoder
+
+class UniqueDecoder():
+    
+    def is_collection_unique(self, deposit_pairs):
+        
+        unique_collection = dict()
+        for key, value in deposit_pairs:
+            if key in unique_collection:
+                return False
+            else:
+                unique_collection[key] = deposit_pairs[key]
+                continue
+
+        return True
 
 class CoinEnum(IntEnum):
 
@@ -8,7 +24,7 @@ class CoinEnum(IntEnum):
     This enumeration defines GB/UK coins ONLY.
 
     """
-    
+
     PENCE_1 = 1
     PENCE_2 = 2
     PENCE_5 = 5

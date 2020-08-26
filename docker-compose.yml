@@ -5,6 +5,15 @@ services:
     build: .
     command: python vending_machine/manage.py runserver 0.0.0.0:8000
     volumes: 
-    - .:/code
+      - .:/code
     ports:
-    - "8000:8000"
+      - "8000:8000"
+  
+  docs:
+    build: ./vending_machine/docs/.
+    volumes: 
+      -  ./vending_machine/docs:/docs"
+    ports: 
+      - "1000:1000"
+    depends_on:
+      - vending-machine

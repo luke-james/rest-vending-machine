@@ -25,7 +25,7 @@ SECRET_KEY = 'bpnbm(#ro4j^-n%1*fk9cy*__jm&0a)o06wpq4c#fq9$!_%zv#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False

@@ -5,23 +5,23 @@ import json
 from .utils import CoinEnum
 
 # models 
-from .models import CoinWallet
+from .models import CoinRegister
 
 # views
-from .views import MachineView
-from .views import ChangeView
+from .views import RegisterStatusView
+from .views import TransactionView
 
-class CoinWalletTestCase(TestCase):
+class CoinRegisterTestCase(TestCase):
     def setUp(self):
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_1'])
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_200'])
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_1'])
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_200'])
 
     def test_CoinTypeCount(self):
 
-        coin_type_1 = CoinWallet.objects.get(unit=CoinEnum['PENCE_1'])
+        coin_type_1 = CoinRegister.objects.get(unit=CoinEnum['PENCE_1'])
         self.assertEquals(coin_type_1.get_value(), 1)
 
-        coin_type_2 = CoinWallet.objects.get(unit=CoinEnum['PENCE_200'])
+        coin_type_2 = CoinRegister.objects.get(unit=CoinEnum['PENCE_200'])
         self.assertEquals(coin_type_2.get_value(), 200)
 
 
@@ -40,7 +40,7 @@ class MachineViewTestCase(TestCase):
 
         }
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
     def test_negative_post_init(self):
@@ -49,13 +49,12 @@ class MachineViewTestCase(TestCase):
         Initialization of a negative number of a type of coins.
         """
 
-        data = {
-            "PENCE_1": {
-                "count": -1
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": -1
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_bad_coin_type_init(self):
@@ -64,13 +63,12 @@ class MachineViewTestCase(TestCase):
         Initialization of a invalid type of coin.
         """
 
-        data = {
-            "PENCE_INVALID": {
-                "count": 1
-            }
-        }
+        data = [{
+            "id": "PENCE_INVALID",
+            "count": 1
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_good_coin_type_init(self):
@@ -79,13 +77,12 @@ class MachineViewTestCase(TestCase):
         Initialization of a valid number of valid type of coins.
         """
 
-        data = {
-            "PENCE_1": {
-                "count": 10
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": 10
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
 class WithdrawChangeViewTestCase(TestCase):
@@ -93,17 +90,17 @@ class WithdrawChangeViewTestCase(TestCase):
         self.url = '/change/'
         self.client = Client()
 
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_1'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_2'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_5'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_10'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_20'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_50'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_100'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_200'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_1'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_2'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_5'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_10'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_20'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_50'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_100'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_200'], count=2)
     
     def tearDown(self):
-        CoinWallet.objects.all().delete()
+        CoinRegister.objects.all().delete()
 
     def test_positive_value_get_change(self):
 
@@ -182,17 +179,17 @@ class DepositChangeViewTestCase(TestCase):
         self.url = '/change/'
         self.client = Client()
 
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_1'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_2'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_5'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_10'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_20'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_50'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_100'], count=2)
-        CoinWallet.objects.create(unit=CoinEnum['PENCE_200'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_1'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_2'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_5'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_10'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_20'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_50'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_100'], count=2)
+        CoinRegister.objects.create(unit=CoinEnum['PENCE_200'], count=2)
     
     def tearDown(self):
-        CoinWallet.objects.all().delete() 
+        CoinRegister.objects.all().delete() 
 
 
     def test_positive_value_post_change(self):
@@ -201,13 +198,12 @@ class DepositChangeViewTestCase(TestCase):
         Test the deposit of cash (no cash given).
         """
 
-        data = {
-            "PENCE_1": {
-                "count": 1
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": 1
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
     def test_empty_post_change(self):    
@@ -220,7 +216,7 @@ class DepositChangeViewTestCase(TestCase):
 
         }
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_negative_post_change(self):
@@ -229,13 +225,12 @@ class DepositChangeViewTestCase(TestCase):
         Test the deposit of cash (negative amount of coin type given).
         """
 
-        data = {
-            "PENCE_1": {
-                "count": -1
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": -1
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_bad_coin_type_post_change(self):
@@ -244,13 +239,12 @@ class DepositChangeViewTestCase(TestCase):
         Test the deposit of cash (negative amount of coin type given).
         """
 
-        data = {
-            "INVALID_COIN_TYPE": {
-                "count":1
-            }
-        }
+        data = [{
+            "id": "PENCE_INVALID",
+            "count": 1
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_string_value_post_change(self):
@@ -259,13 +253,12 @@ class DepositChangeViewTestCase(TestCase):
         Test the deposit of cash (string type given for coin count).
         """
 
-        data = {
-            "PENCE_1": {
-                "count": "1"
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": "1"
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_float_whole_value_post_change(self):
@@ -274,13 +267,12 @@ class DepositChangeViewTestCase(TestCase):
         Test the deposit of cash (float type given for coin count).
         """
 
-        data = {
-            "INVALID_COIN_TYPE": {
-                "count": 1.0
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": 1.0
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
 
     def test_float_non_whole_value_post_change(self):
@@ -289,11 +281,10 @@ class DepositChangeViewTestCase(TestCase):
         Test the deposit of cash (float type given for coin count).
         """
 
-        data = {
-            "PENCE_1": {
-                "count": 1.5
-            }
-        }
+        data = [{
+            "id": "PENCE_1",
+            "count": 1.5
+        }]
 
-        response = self.client.post(self.url, data=json.dumps(data), content_type='text/json')
+        response = self.client.post(self.url, data=json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 400)
