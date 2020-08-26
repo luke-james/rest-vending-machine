@@ -1,0 +1,2 @@
+class ChangeError(Exception):
+    pass

@@ -108,7 +108,7 @@ class WithdrawChangeViewTestCase(TestCase):
         Test the withdrawl of a single, valid coin that exists.
         """
 
-        response = self.client.get(self.url, { "amount": 1 })
+        response = self.client.get(self.url, data={ "amount": 1 }, content_type='application/json')
         self.assertEqual(response.status_code, 200)
     
     def test_positive_too_much_value_get_change(self):

@@ -72,15 +72,16 @@ A collection of coins to be initialized into the vending machine.  The key will 
 - `500 INTERNAL SERVER ERROR` general error <br>
 
 ```json
-{
-    "PENCE_1": {
+[
+    {
+        "id": "PENCE_1",
         "count": 2
-    },      
-     
-    "PENCE_2": {
+    },
+    {
+        "id": "PENCE_2",
         "count": 10
     }
-}
+]
 ```
 
 ## Get change (float amount)
@@ -89,7 +90,7 @@ A collection of coins to be initialized into the vending machine.  The key will 
 `GET /change/<amount>`
 
 **Arguments**<br>
-- `"amount": integer` the amount of change (in pence) that has been requested - this must be a positive value.
+- `"amount": integer` the amount of change (in pence) that has been requested - this must be a positive integer value.
 
 **Response**<br>
 - `200 OK` on success <br>
@@ -100,13 +101,7 @@ A collection of coins to be initialized into the vending machine.  The key will 
 
 ```json
 {
-    "PENCE_1": {
-        "count": 20
-    },
-
-    "PENCE_200": {
-        "count": 1
-    }
+    "amount": 100
 }
 ```
 
@@ -116,24 +111,24 @@ A collection of coins to be initialized into the vending machine.  The key will 
 `POST /change/<coins>` 
 
 **Arguments**<br>
-- `{ "coin_type": { "count": integer }}` collection of coin being deposited.
+- `{ "coin_type": { "count": integer }}` collection of coins being deposited.
 
 **Response**<br>
 - `200 OK` on success
 - `400 BAD REQUEST` invalid coin deposited/0 coins have been deposited
 
 ```json
-{
-    "PENCE_1": {
-        "count": 5
+[
+    {
+        "id": "PENCE_1",
+        "count": 2
     },
-
-    "PENCE_2": {
+    {
+        "id": "PENCE_2",
         "count": 10
-        
-}
+    }
+]
 ```
-
 
 ## Assumptions<br>
 1. The machine can initialize using multiple coins at once (as if the engineer as opened the side and 'popped a few coins in for change').

@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from os import path
 import markdown
+import logging
 
 import json
 from json.decoder import JSONDecodeError
@@ -18,6 +19,8 @@ from .models import CoinRegister
 from .utils import CoinEnum
 
 from exceptions import ChangeError
+
+logger = logging.getLogger(__name__)
 
 @method_decorator(csrf_exempt, name="dispatch")
 def index(request):
@@ -69,8 +72,12 @@ class RegisterStatusView(View):
 
         try:
 
+            logger.info('Request for initialize machine register received!')
             data = JSONParser().parse(request) 
+            logger.debug('Request successfully parsed in JSON format!')
+            
             # Let's check to make sure all coin types given are valid...
+            logger.debug('Checking for invalid coin types in JSON data...')
             [ CoinEnum[coin['id']] for coin in data ]
             coins_initialized = []
             
@@ -82,18 +89,24 @@ class RegisterStatusView(View):
                 coin_in_register, created = CoinRegister.objects.get_or_create(unit=CoinEnum[coin_id])
                 for initialized_coin in data:
                     if coin_id == initialized_coin['id']:
+                        logger.debug(f'Attempting initialization for coin type { initialized_coin["id"] } with a count of { initialized_coin["count"] }')
                         if initialized_coin['count'] > 0:
+                            logger.debug(f'Initializing coin type: { initialized_coin["id"] } with a count of: { initialized_coin["count"] }...')
                             coin_in_register.count = initialized_coin['count']
                             break
                         else:
+                            logger.debug(f'Not enough coins deposited for type: { initialized_coin["id"] }! Aborting initialization...')
                             raise (ValueError)
                     else:
+                        logger.debug(f'Coin type { initialized_coin["id"] } not part of the request!  Initializing with a count of 0...')
                         coin_in_register.count = 0
 
                 coin_in_register.save()
-                coins_initialized.append({ "id": coin_id, "count": coin_in_register.count})
-            
+                coins_initialized.append({ "id": coin_in_register.unit, "count": coin_in_register.count})
+                logger.info(f'Coin type: { coin_in_register.unit }, count: { coin_in_register.count } initialized!')
+
             # return collection of coins (& counts) initialized 
+            logger.info(f'Initialized coins: { coins_initialized }! Sending response to client...')
             return JsonResponse({
                 "Register balance": coins_initialized
             }, status=status.HTTP_200_OK)
@@ -140,6 +153,7 @@ class TransactionView(View):
 
         try:
 
+            logger.info('Request for withdraw transaction received!')
             requested_change = int(request.GET.get('amount'))
             if requested_change <= 0:
                 raise(ValueError)
@@ -151,31 +165,42 @@ class TransactionView(View):
 
             # For the coins available in the wallet/register, we must check to see if we have a valid number available to give back to the user.
             # This loop will check each coin type (from largest to smallest) - if the coin is small enough to be used as change, the vending machine will give 
+            logger.debug('Collecting coins for withraw...')
             for coin_type in coins_in_wallet:
                 if (coin_type.unit <= requested_change):
+                    logger.debug(f'Coin type { coin_type.unit } can be used for withdraw.  Calculating withdraw count...')
                     coin_given = requested_change // coin_type.unit
+                    logger.debug(f'{coin_given}x of coin type { coin_type.unit } can be used for withdraw!')
                     if coin_type.count > 0:
                         if coin_type.count >= coin_given:
                             coin_type.count -= coin_given
+                            logger.debug(f'{coin_given} used of coin type: { coin_type.unit }')
                         else:
+                            logger.warning(f'Coin type: { coin_type.unit } not enough coins to be used to minimise change given!  Using all coins available...')
                             coin_given = coin_type.count
                             coin_type.count = 0
+                        
                         coin_type.save()   
                         change_given[CoinEnum(coin_type.unit).name] = coin_given
                         requested_change -= coin_type.unit * coin_given
+                        logger.debug(f'{ requested_change } pence still owed for withdraw...')
+                    
 
             # Check to make sure we have given any change at all
             if not bool(change_given):
+                logger.warning('Vending machine has no cash left!  Re-initialization/cash deposits need to be made before any more coins can be withdrawn...')
                 raise(ChangeError)
         
             # if the full change request can be fulfilled - return full change.
             if requested_change == 0:
+                logger.info(f'{ change_given } pence widthrawm (full amount owed)!')
                 return JsonResponse({
                     "Change Given": change_given    
                     }, status=status.HTTP_200_OK)
             
             # Tell the user what happened... (i.e not enough change!)
             else:
+                logger.warning(f'{ change_given } pence widthrawm (not the full amount owed)!')
                 return JsonResponse({
                     "Coins withdrawn": change_given    
                     }, status=status.HTTP_206_PARTIAL_CONTENT)
@@ -197,7 +222,7 @@ class TransactionView(View):
 
         except:
             return JsonResponse({
-                "message": "Unable to initialize machine!  Please check the format of your JSON request."
+                "message": "Unable to withdraw coins!  Please check the format of your JSON request."
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)     
 
     def post(self, request):
@@ -215,9 +240,13 @@ class TransactionView(View):
         """
 
         try:
-            
-            # Parse request & check all deposited coins are valid...
+    
+            logger.info('Request for deposit transaction received!')
             data = JSONParser().parse(request)
+            logger.debug('Request successfully parsed in JSON format!')
+            
+            # Let's check to make sure all coin types given are valid...
+            logger.debug('Checking for invalid coin types in JSON data...')
             [ CoinEnum[coin["id"]] for coin in data ]
 
             # Raise error if no coins have been requested for deposit...
@@ -228,6 +257,7 @@ class TransactionView(View):
             # Deposit all coins from data into a CoinRegister model object...
             for coin_value, coin_id in CoinEnum.choices():
                 for deposited_coin in data:
+                    logger.debug(f'Attempting to deposit coin type: { deposited_coin["id"] }')
                     if deposited_coin["count"] > 0:
                         if isinstance(deposited_coin["count"], int):
                             if (coin_id == deposited_coin["id"]):
@@ -242,8 +272,10 @@ class TransactionView(View):
                                     coin_in_register.save()
                                     break
                         else:
+                            logger.info(f'Cannot deposit coin type: { deposited_coin["id"] } - count not expressed as integer type!')
                             raise (ChangeError)
                     else:
+                        logger.info(f'Cannot deposit coin type: { deposited_coin["id"] } - deposit count less than 1!')
                         raise (ValueError)
             
             return JsonResponse({
@@ -272,7 +304,7 @@ class TransactionView(View):
 
         except:
             return JsonResponse({
-                "message": "Unable to initialize machine!  Please check the format of your JSON request."
+                "message": "Unable to deposit coins!  Please check the format of your JSON request."
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  
 
 
